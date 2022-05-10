@@ -1,0 +1,30 @@
+.confirmed_container {
+	margin: 2rem;
+	padding: 1rem;
+	border: 1px solid black;
+	border-radius: 2px;
+	background-color: rgba(10, 250, 0, 0.2);
+	max-width: 500px;
+}
+
+.confirmed {
+	display: flex;
+	flex-grow: 1;
+	text-align: center;
+	line-height: 1.2;
+}
+
+.link {
+	margin: 0.5rem 0;
+	text-decoration: underline;
+}
+
+.link:hover {
+	cursor: pointer;
+	color: rgba(10, 80, 0, 1);
+	text-shadow: 2px 2px 6px rgba(10, 80, 0, 0.4);
+}
+
+.accent {
+	font-weight: bold;
+}

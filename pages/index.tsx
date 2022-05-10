@@ -1,7 +1,10 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import Link from "next/link";
+import Footer from "../components/Footer";
+import styles from "../styles/shared.module.css";
+import { URLS } from "../utils/constants";
 
 const Home: NextPage = () => {
 	return (
@@ -24,18 +27,12 @@ const Home: NextPage = () => {
 				/>
 				<h1 className={styles.title}>ryer.io</h1>
 				<span className={styles.slogan}>Pay-as-you-go fractional CTO</span>
-				<button className={styles.cta}>Book a free consultation</button>
+				<Link href={URLS.calendar}>
+					<a className={styles.cta}>Book a free consultation</a>
+				</Link>
 			</main>
 
-			<footer className={styles.footer}>
-				<a
-					href='https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					built by (of course): ryer.io
-				</a>
-			</footer>
+			<Footer />
 		</>
 	);
 };

@@ -56,9 +56,10 @@
 	align-items: center;
 }
 
-.footer a {
+.footer span {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-grow: 1;
+	font-size: 0.9rem;
 }
