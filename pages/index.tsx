@@ -1,38 +1,45 @@
 import type { NextPage } from "next";
-import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import Footer from "../components/Footer";
+import Card from "../components/base/Card/Card";
+import Services from "../components/sections/Services/Services";
 import styles from "../styles/shared.module.css";
 import { URLS } from "../utils/constants";
 
 const Home: NextPage = () => {
 	return (
 		<>
-			<Head>
-				<title>ryer.io</title>
-				<meta
-					name='description'
-					content='ryer.io is your CTO, but only when you need it'
+			<Image
+				width={128}
+				height={128}
+				src='/images/ryerio-logo256.png'
+				alt='ryer.io'
+			/>
+			<h1 className={styles.title}>ryer.io</h1>
+			<span className={styles.slogan}>Pay-as-you-go technical leadership</span>
+			<Link href={URLS.calendar}>
+				<a className={styles.cta}>Book a free consultation</a>
+			</Link>
+			<Services title='The impact we bring you is real.'>
+				<Card
+					headline='Keep your vision and brand healthy across your entire digital presence'
+					sub="We are professional digital account administrators. Anywhere your brand and vision can be implemented into your digital toolset, we'll make sure it's well-represented. We also make sure you're compliant with 3rd-party requirements so small problems don't get big."
+					image='/images/givemeahand.png'
+					imageAlt='hand'
 				/>
-				<link rel='icon' href='/favicon.ico' />
-			</Head>
-
-			<main className={styles.main}>
-				<Image
-					width={128}
-					height={128}
-					src='/images/ryerio-logo256.png'
-					alt='ryer.io'
+				<Card
+					headline='Be fast when you use us to make new websites, software, or to help design and market digital products'
+					sub=''
+					image='/images/givemeahand.png'
+					imageAlt='hand'
 				/>
-				<h1 className={styles.title}>ryer.io</h1>
-				<span className={styles.slogan}>Pay-as-you-go fractional CTO</span>
-				<Link href={URLS.calendar}>
-					<a className={styles.cta}>Book a free consultation</a>
-				</Link>
-			</main>
-
-			<Footer />
+				<Card
+					headline="You don't like dealing with hardware and software, but we do"
+					sub=''
+					image='/images/givemeahand.png'
+					imageAlt='hand'
+				/>
+			</Services>
 		</>
 	);
 };

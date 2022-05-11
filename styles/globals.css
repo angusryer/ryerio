@@ -1,3 +1,9 @@
+:root {
+	--primary: #282828;
+	--secondary: #23bb02;
+	--secondary-light: rgba(10, 250, 0, 0.2);
+}
+
 @font-face {
 	font-family: "Ubunto Mono";
 	src: url("/fonts/UbuntuMono-Regular.ttf") format("truetype");
