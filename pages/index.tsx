@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import type { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,6 +8,20 @@ import styles from "../styles/shared.module.css";
 import { URLS } from "../utils/constants";
 
 const Home: NextPage = () => {
+	useEffect(() => {
+		(async () => {
+			fetch("/api/notion", {
+				method: "get"
+			})
+				.then((res) => {
+					return res.json();
+				})
+				.then((res) => {
+					console.log("result: ", res);
+				});
+		})();
+	}, []);
+
 	return (
 		<>
 			<Image
