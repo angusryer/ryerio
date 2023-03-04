@@ -3,6 +3,7 @@ import markdownComponents from '@lib/markdown';
 import { getDataBasedOnId, getPostIds } from '@lib/posts';
 import { Params } from 'next/dist/server/router';
 import Head from 'next/head';
+import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 
 type PostProps = {
@@ -20,6 +21,8 @@ export default function ProjectPage(data: PostProps) {
       <Head>
         <title>{data.title}</title>
       </Head>
+      <Link href={'/'}>HOME</Link>
+      <br />
       <Date dateString={data.date} />
       <ReactMarkdown components={markdownComponents}>
         {data.markDown}

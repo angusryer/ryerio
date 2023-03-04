@@ -6,3 +6,7 @@ description: Out of the shower and onto the stage
 ---
 # micdrp
 ## Out of the shower and onto the stage.
+
+``` typescript
+const myLife = 'good';
+```
