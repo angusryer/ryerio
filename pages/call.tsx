@@ -2,10 +2,10 @@ import type { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Footer from "../components/sections/Footer/Footer";
+import Footer from "../components/shared-composed/Footer/Footer";
 import styles from "../styles/shared.module.css";
 import callStyles from "../styles/Call.module.css";
-import { URLS } from "../utils/constants";
+import { URLS } from "../lib/constants";
 
 const Home: NextPage = () => {
 	const { query } = useRouter();

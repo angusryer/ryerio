@@ -1,7 +1,7 @@
 import React from "react";
-import ResponsiveGrid from "../../base/ResponsiveGrid/ResponsiveGrid";
-import SectionContainer from "../../base/SectionContainer/SectionContainer";
-import SectionHeader from "../../base/SectionHeader/SectionHeader";
+import ResponsiveGrid from "../../shared-base/ResponsiveGrid/ResponsiveGrid";
+import SectionContainer from "../../shared-base/SectionContainer/SectionContainer";
+import SectionHeader from "../../shared-base/SectionHeader/SectionHeader";
 
 type SectionProps = {
 	title?: string;

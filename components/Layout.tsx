@@ -1,5 +1,5 @@
 import styles from "../styles/shared.module.css";
-import Footer from "./sections/Footer/Footer";
+import Footer from "./shared-composed/Footer/Footer";
 
 export default function Layout({ children }: WithChildren) {
 	return (

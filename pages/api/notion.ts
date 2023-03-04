@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { notion } from "../../run-once/notion";
+import { notion } from "../../config/notion";
 
 export default async function handler(
 	req: NextApiRequest,

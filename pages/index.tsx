@@ -2,12 +2,14 @@ import { useEffect } from "react";
 import type { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import Card from "../components/base/Card/Card";
-import Services from "../components/sections/Services/Services";
+import Card from "../components/shared-base/Card/Card";
+import Services from "../components/shared-composed/Services/Services";
 import styles from "../styles/shared.module.css";
-import { URLS } from "../utils/constants";
+import { URLS } from "../lib/constants";
+import { Params } from "next/dist/server/router";
+import { getAllPostsWithFrontMatter } from "../lib/posts";
 
-const Home: NextPage = () => {
+const Home: NextPage = ({ posts }: any) => {
 	useEffect(() => {
 		(async () => {
 			fetch("/api/notion", {
@@ -55,8 +57,42 @@ const Home: NextPage = () => {
 					imageAlt='hand'
 				/>
 			</Services>
+			<div className="posts">
+      {!posts && <div>No posts!</div>}
+      <ul>
+        {posts &&
+          posts
+            .sort(
+              (a: any, b: any) =>
+                new Date(b.date).getTime() - new Date(a.date).getTime(),
+            )
+            .map((post: any) => {
+              return (
+                <article key={post.id} className="post-title">
+                  <Link href={{ pathname: `/projects/${post.id}` }}>
+                    <a>{post.frontMatter.title} - {post.frontMatter.description}</a>
+                  </Link>
+                  {/* <p>[ {post.frontMatter.tags.join(', ')} ]</p> */}
+                </article>
+              )
+            })}
+      </ul>
+    </div>
 		</>
 	);
 };
 
 export default Home;
+
+
+export async function getStaticProps() {
+	const posts = getAllPostsWithFrontMatter('projects')
+	console.log("POSTS", posts)
+  return {
+    props: {
+      posts,
+      title: 'Projects',
+      description: 'My personal projects',
+    },
+  }
+}
