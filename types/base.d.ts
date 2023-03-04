@@ -1,16 +1,16 @@
 type WithChildren = {
-	children?: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 type StringChildren = {
-	children?: string;
+  children?: string;
 };
 
 type CommonPostData = Record<string, string> & {
-	id: string;
-	title: string;
-	date: string;
-	slug: string,
-	content: string;
-	contentHtml: string;
-}
+  id: string;
+  title: string;
+  date: string;
+  slug: string;
+  content: string;
+  contentHtml: string;
+};

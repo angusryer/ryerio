@@ -1,6 +1,5 @@
-import { parseISO, format } from 'date-fns';
+import { toReadableDate } from '../../lib/utils';
 
-export default function Date({ dateString }: { dateString: string}) {
-  const date = parseISO(dateString);
-  return <time dateTime={dateString}>{format(date, 'LLLL d, yyyy')}</time>;
+export default function DateText({ dateString }: { dateString: string }) {
+  return <time dateTime={dateString}>{toReadableDate(dateString)}</time>;
 }
