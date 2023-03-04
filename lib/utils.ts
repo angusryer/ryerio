@@ -1,4 +1,4 @@
-const locale: Intl.LocalesArgument = 'en-US';
+const locale = 'en-US';
 const config: Intl.DateTimeFormatOptions = {
   dateStyle: 'full'
 };
