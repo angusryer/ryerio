@@ -33,9 +33,9 @@ export default function ProjectPage(data: PostProps) {
 }
 
 export async function getStaticPaths() {
-  const projectIdParams = getPostIds('projects');
+  const idParams = getPostIds('learning');
   return {
-    paths: projectIdParams,
+    paths: idParams,
     fallback: false
   };
 }
@@ -43,7 +43,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }: Params) {
   const { date, id, markDown, title } = await getDataBasedOnId(
     params.id,
-    'projects'
+    'learning'
   );
   return {
     props: {

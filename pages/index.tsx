@@ -1,4 +1,5 @@
 import Card from '@components/shared-base/Card/Card';
+import PageLayout from '@components/shared-composed/PageLayout/PageLayout';
 import Services from '@components/shared-composed/Services/Services';
 import { URLS } from '@lib/constants';
 import { getAllPostsWithFrontMatter } from '@lib/posts';
@@ -8,7 +9,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect } from 'react';
 
-const Home: NextPage = ({ posts }: any) => {
+const Home: NextPage = ({ projects, learnings }: any) => {
   useEffect(() => {
     (async () => {
       fetch('/api/notion', {
@@ -24,7 +25,7 @@ const Home: NextPage = ({ posts }: any) => {
   }, []);
 
   return (
-    <>
+    <PageLayout>
       <Image
         width={128}
         height={128}
@@ -57,10 +58,9 @@ const Home: NextPage = ({ posts }: any) => {
         />
       </Services>
       <div className='posts'>
-        {!posts && <div>No posts!</div>}
         <ul>
-          {posts &&
-            posts
+          {projects.projects &&
+            projects.projects
               .sort(
                 (a: any, b: any) =>
                   new Date(b.date).getTime() - new Date(a.date).getTime()
@@ -79,20 +79,47 @@ const Home: NextPage = ({ posts }: any) => {
                 );
               })}
         </ul>
+        <ul>
+          {learnings.learnings &&
+            learnings.learnings
+              .sort(
+                (a: any, b: any) =>
+                  new Date(b.date).getTime() - new Date(a.date).getTime()
+              )
+              .map((post: any) => {
+                return (
+                  <article key={post.id} className='post-title'>
+                    <Link href={{ pathname: `/learnings/${post.id}` }}>
+                      <a>
+                        {`${post.frontMatter.title} - ${post.frontMatter.description}`}
+                      </a>
+                    </Link>
+                    <br />
+                    <code>{post.frontMatter.tags.join(' | ')}</code>
+                  </article>
+                );
+              })}
+        </ul>
       </div>
-    </>
+    </PageLayout>
   );
 };
 
 export default Home;
 
 export async function getStaticProps() {
-  const posts = getAllPostsWithFrontMatter('projects');
+  const projects = getAllPostsWithFrontMatter('projects');
+  const learnings = getAllPostsWithFrontMatter('learning');
   return {
     props: {
-      posts,
-      title: 'Projects',
-      description: 'My personal projects'
+      projects: {
+        projects,
+        title: 'Projects'
+      },
+      learnings: {
+        learnings,
+        title: 'Understanding'
+      }
     }
   };
 }
