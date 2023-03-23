@@ -10,3 +10,5 @@ description: Out of the shower and onto the stage
 ``` typescript
 const myLife = 'good';
 ```
+
+[How to set up React Native environment variables for iOS and Android](https://ryer.io/learning/react-native-env-vars)

@@ -1,20 +1,18 @@
-import React from "react";
-import ResponsiveGrid from "../../shared-base/ResponsiveGrid/ResponsiveGrid";
-import SectionContainer from "../../shared-base/SectionContainer/SectionContainer";
-import SectionHeader from "../../shared-base/SectionHeader/SectionHeader";
+import Containers from '@components/shared-base/Containers';
+import Typography from '@components/shared-base/Typography';
 
 type SectionProps = {
-	title?: string;
+  title?: string;
 };
 
 export default function Services({
-	children,
-	title
+  children,
+  title
 }: WithChildren & SectionProps) {
-	return (
-		<SectionContainer>
-			{!title ? null : <SectionHeader>{title}</SectionHeader>}
-			<ResponsiveGrid>{children}</ResponsiveGrid>
-		</SectionContainer>
-	);
+  return (
+    <Containers.Section>
+      {!title ? null : <Typography.Heading>{title}</Typography.Heading>}
+      <Containers.Grid>{children}</Containers.Grid>
+    </Containers.Section>
+  );
 }

@@ -57,7 +57,7 @@ const Home: NextPage = ({ projects, learnings }: any) => {
           imageAlt='hand'
         />
       </Services>
-      <div className='posts'>
+      <section className='posts'>
         <ul>
           {projects.projects &&
             projects.projects
@@ -100,7 +100,7 @@ const Home: NextPage = ({ projects, learnings }: any) => {
                 );
               })}
         </ul>
-      </div>
+      </section>
     </PageLayout>
   );
 };
