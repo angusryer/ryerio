@@ -68,7 +68,7 @@ After all this, for good measure, I'd run a `pod cache clean --all && pod instal
 
 ### BONUS!
 
-If you've already done the steps [here](https://ryer.io/learning/align-xcode-version-numbers)
+If you've already done the steps [here](https://ryer.io/learning/align-xcode-version-numbers.html)
 
 
 ## Set up Android (mostly Android Studio)
@@ -151,3 +151,5 @@ release {
 ```
 
 I wasn't able to get the `applicationIdSuffix` to work as intended in the time I had to configure this, so I left it out. It allows you to install all three apps onto a physical or simulated device at the same time (since they won't occupy the same namespace).
+
+Also remember to have your `signingConfigs` set up (see [here](https://ryer.io/learning/android-signing-configs.html))
