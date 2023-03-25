@@ -1,7 +1,7 @@
+import { PostSources, SourceName } from '@typedefs/posts';
 import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
-import { PostSources, type SourceName } from '../types/postSources';
 import { toReadableDate } from './utils';
 
 const rootDir = process.cwd();
@@ -31,6 +31,7 @@ export async function getDataBasedOnId(id: string, sourceName: SourceName) {
     id,
     markDown: postData?.content || '',
     title: postData?.data?.title || id,
+    description: postData?.data?.description || '',
     date: new Date(postData?.data?.date).toLocaleDateString() || '',
     ...postData
   };
@@ -57,6 +58,7 @@ export function getAllPostsWithFrontMatter(
       frontMatter: {
         ...data,
         title: data.title || id,
+        description: data.description || '',
         tags: tagsArray,
         date: toReadableDate(data.date)
       }
@@ -69,6 +71,7 @@ type PostFrontMatterData = {
   id: string;
   frontMatter: {
     title: string;
+    description: string;
     date: string;
     tags: string[];
     [key: string]: any;

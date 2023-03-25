@@ -1,5 +1,6 @@
 import Card from '@components/shared-base/Card/Card';
 import PageLayout from '@components/shared-composed/PageLayout/PageLayout';
+import PostLinkList from '@components/shared-composed/PostLinkList';
 import Services from '@components/shared-composed/Services/Services';
 import { URLS } from '@lib/constants';
 import { getAllPostsWithFrontMatter } from '@lib/posts';
@@ -9,7 +10,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect } from 'react';
 
-const Home: NextPage = ({ projects, learnings }: any) => {
+const Home: NextPage = ({ make, docs, thot }: any) => {
   useEffect(() => {
     (async () => {
       fetch('/api/notion', {
@@ -58,48 +59,9 @@ const Home: NextPage = ({ projects, learnings }: any) => {
         />
       </Services>
       <section className='posts'>
-        <ul>
-          {projects.projects &&
-            projects.projects
-              .sort(
-                (a: any, b: any) =>
-                  new Date(b.date).getTime() - new Date(a.date).getTime()
-              )
-              .map((post: any) => {
-                return (
-                  <article key={post.id} className='post-title'>
-                    <Link href={{ pathname: `/projects/${post.id}` }}>
-                      <a>
-                        {`${post.frontMatter.title} - ${post.frontMatter.description}`}
-                      </a>
-                    </Link>
-                    <br />
-                    <code>{post.frontMatter.tags.join(' | ')}</code>
-                  </article>
-                );
-              })}
-        </ul>
-        <ul>
-          {learnings.learnings &&
-            learnings.learnings
-              .sort(
-                (a: any, b: any) =>
-                  new Date(b.date).getTime() - new Date(a.date).getTime()
-              )
-              .map((post: any) => {
-                return (
-                  <article key={post.id} className='post-title'>
-                    <Link href={{ pathname: `/learnings/${post.id}` }}>
-                      <a>
-                        {`${post.frontMatter.title} - ${post.frontMatter.description}`}
-                      </a>
-                    </Link>
-                    <br />
-                    <code>{post.frontMatter.tags.join(' | ')}</code>
-                  </article>
-                );
-              })}
-        </ul>
+        <PostLinkList content={make} category={'make'} />
+        <PostLinkList content={docs} category={'docs'} />
+        <PostLinkList content={thot} category={'thot'} />
       </section>
     </PageLayout>
   );
@@ -108,17 +70,22 @@ const Home: NextPage = ({ projects, learnings }: any) => {
 export default Home;
 
 export async function getStaticProps() {
-  const projects = getAllPostsWithFrontMatter('projects');
-  const learnings = getAllPostsWithFrontMatter('learning');
+  const make = getAllPostsWithFrontMatter('make');
+  const docs = getAllPostsWithFrontMatter('docs');
+  const thot = getAllPostsWithFrontMatter('thot');
   return {
     props: {
-      projects: {
-        projects,
-        title: 'Projects'
+      make: {
+        make,
+        title: "Things I've Made"
       },
-      learnings: {
-        learnings,
-        title: 'Understanding'
+      docs: {
+        docs,
+        title: "How I've Done Things"
+      },
+      thot: {
+        thot,
+        title: 'Inside my Mind'
       }
     }
   };

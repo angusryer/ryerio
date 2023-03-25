@@ -1,7 +1,7 @@
 ---
 title: Set up Android signing configs
 description: CLI methods to generate your very own release and debug signing configs for Android mobile development
-tags: android, react-native, devops
+tags: android, react-native, devops, wips
 date: 2023-03-23
 ---
 
